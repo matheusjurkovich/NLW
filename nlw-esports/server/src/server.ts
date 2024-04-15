@@ -9,7 +9,9 @@ app.use(express.json())
 const prisma = new PrismaClient({
     log: ['query'],
 })
-app.use(cors({}))
+app.use(cors({
+    origin: 'http://ec2-15-228-246-50.sa-east-1.compute.amazonaws.com'
+}))
 
 app.get('/games', async (req, res) => {
     const games = await prisma.game.findMany({
